@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
+from modulos.alunos import alunos
 
 try:
     con = MongoClient()
@@ -8,6 +9,7 @@ except Exception as e:
     print(e)
 
 app = Flask(__name__)
+app.register_blueprint(alunos)
 
 
 def validar_json(json, method="GET"):
